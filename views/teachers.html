@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<!-- Imagen Cabecera-->
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1> {{ title }} </h1>
+                    <span class="subheading">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Información del profesorado -->
+<section class="container my-3">
+    <h2>Sobre Nosotros</h2>
+    <p>
+        En English Academia, nos enorgullecemos de contar con un equipo de profesores de inglés altamente cualificados y
+        experimentados que están apasionados por la enseñanza y dedicados al éxito de cada estudiante.
+        <br><br>
+        Nuestros profesores no solo son expertos en la enseñanza del inglés, sino que también son mentores, guías y
+        motivadores.
+        Se preocupan por el bienestar de sus estudiantes y están siempre dispuestos a brindarles apoyo adicional.
+        <br><br>
+        Te invitamos a conocer a todo nuestro equipo de profesores en nuestra página web o visitando nuestra academia.
+        Estamos seguros de que encontrarás al profesor perfecto para ayudarte a alcanzar tus metas en el aprendizaje del
+        inglés.
+    </p>
+</section>
+
+<!-- Profesores -->
+<section class="container mb-5">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center my-5">
+
+        {% for teacher in teachers %}
+        <article class="col p-3">
+            <div class="card clicable border-0" data-bs-toggle="collapse" data-bs-target="#teachersCollapse_{{loop.index}}" aria-expanded="false" aria-controls="teachersCollapse_{{loop.index}}">
+                <div class="teacher-photo-container card-header border-0">
+                    <img src="{{ teacher.photo }}" class="teacher-photo card-img rounded-circle" alt="{{ teacher.name }}"/>
+                </div>
+
+                <div class="card-body">
+                    <h3 class="card-title fs-5">{{ teacher.name }}</h3>
+                    <p class="card-subtitle text-body-secondary small">{{ teacher.position }}</p>
+                    <div class="collapse" id="teachersCollapse_{{loop.index}}">
+                        <p class="card-text small mt-2">{{ teacher.bio }}</p>
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex list-group-horizontal g-4 justify-content-evenly align-items-center">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                            class="list-group-item border-0 p-0" title="Instagram">
+                            <i class="bi bi-instagram fs-5"></i>
+                        </a>
+
+                        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer"
+                            class="list-group-item border-0 p-0" title="YouTube">
+                            <i class="bi bi-youtube fs-4"></i>
+                        </a>
+
+                        <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer"
+                            class="list-group-item border-0 p-0" title="TikTok">
+                            <i class="bi bi-tiktok fs-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+
+    </div>
+</section>
+
+
+{% endblock %}

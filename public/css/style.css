@@ -1,0 +1,333 @@
+/* ######################## MI CSS ######################## */
+
+/* Textarea en /contacto */
+#floatingMensaje {
+  height: 150px;
+}
+
+/* Tickets de eventos */
+.ticket {
+  font-family: sans-serif;
+  margin: auto;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  color: #fff;
+}
+
+.ticket-info {
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding: 5px 0;
+  font-weight: 700;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.date span:first-child {
+  text-align: left;
+  color: #cccaf4;
+}
+
+.date span:last-child {
+  text-align: right;
+  color: #eb7575;
+}
+
+.date .day {
+  font-size: 20px;
+}
+
+.time {
+  padding: 30px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+}
+
+.time span {
+  font-weight: 400;
+  color: lightgray;
+}
+
+.location {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 8px 0 8px;
+  border-top: 1px solid gray;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.location span:first-child {
+  text-align: left;
+}
+
+.location span:last-child {
+  text-align: right;
+}
+
+.ticket-side {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000;
+  text-align: center;
+}
+
+.ticket-side .show-name h1 {
+  padding-top: 30px;
+  font-size: 38px;
+  color: #000;
+}
+
+.qr {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.ticket-0 {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.75)
+    ),
+    url("../images/pexels-vectors-icon-355704-968299.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.85;
+}
+
+.ticket-1 {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.75)
+    ),
+    url("../images/pexels-michaela-219544-704930.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.85;
+}
+
+/* Tamaño de los videos */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  /* Proporción de aspecto 16:9 */
+}
+
+.video-container iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* Estilo imagen en últimos cursos de inicio */
+.img-container {
+  width: 100%;
+  padding-bottom: 100%;
+  margin-bottom: 20px;
+}
+
+.img-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (min-width: 575px) {
+  .img-container {
+    width: 59%;
+    padding-bottom: 56.25%;
+    margin-bottom: 0px;
+  }
+
+  .img-container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Estilo link en últimos singles de inicio */
+.platformName {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: small;
+}
+
+.platform:hover {
+  text-decoration: none;
+}
+
+/* Zoom en /detalles y /tienda */
+.zoomBorder {
+  overflow: hidden;
+}
+
+.zoomIn:hover {
+  background-position: center;
+  background-size: cover;
+  transition: transform ease 0.4s;
+  transform: scale(1.5);
+}
+
+
+/* Imágen principal y las miniaturas del producto en /detalles */
+#mainImage {
+  width: 100%;
+  max-width: 350px;
+  min-width: 200px;
+  height: auto;
+  max-height: 350px;
+  min-height: 200px;
+  object-fit: cover;
+}
+
+.thumbnail {
+  max-width: 100%;
+  height: 75px;
+}
+
+/* Galería de imágenes / Multimedia responsive */
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.image-gallery .column {
+  flex: 1 1 calc(33.33% - 25px);
+  /* Tamaño de la columna con margen */
+}
+
+.image-gallery img {
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 767px) {
+  .image-gallery .column {
+    flex-basis: calc(50% - 25px);
+    /* Dos columnas en md */
+    gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .image-gallery .column {
+    flex-basis: calc(100% - 25px);
+    /* Una columna en sm */
+    gap: 10px;
+  }
+}
+
+/* Cambio de color de los iconos a blanco en navbar  */
+.icnBW {
+  color: #ececec;
+}
+
+.icnBW:hover {
+  color: #0085a1 !important;
+}
+
+
+/* Fotos de perfil para los profesores en /nosotros*/
+.teacher-photo {
+  outline: 10px solid #ffffff;
+  outline-offset: -10px;
+}
+
+
+
+/* Cambio ratón a clicable */
+.clicable:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Color del texto e imágenes en hoover de las rrss del footer */
+.rrssFooter:hover {
+  color: #0085a1;
+}
+
+.rrssFooter:hover img {
+  filter: invert(65%) sepia(90%) saturate(300%) hue-rotate(160deg);
+}
+
+
+
+/* Modal con el pop-up de imágenes en /multimedia a pantalla completa */
+#modalMultimedia {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+#modalMultimedia .modal-dialog {
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+@media only screen and (max-width: 576px) {
+  #modalMultimedia .modal-dialog {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+#modalMultimedia .modal-content {
+  background: rgba(0, 0, 0, 0);
+}
+
+#carouselMultimedia .carousel-inner img {
+  max-width: 90vw;
+  max-height: 90vh;
+  margin: auto;
+}
+
+/* Modal con el pop-up de imágenes en /{producto}/detalles a pantalla completa */
+#modalZoom {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+#modalZoom .modal-dialog {
+  display: flex;
+  justify-content: center;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+@media only screen and (max-width: 576px) {
+  #modalZoom .modal-dialog {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+#modalZoom .modal-body img {
+  max-height: 90vh;
+  max-width: 90vw;
+  margin: auto;
+}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<!-- Imagen Cabecera-->
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1> {{ title }} </h1>
+                    <span class="subheading">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Bloque de Tienda -->
+<section class="container my-5">
+    <h2 class="text-uppercase border-bottom pb-3">Merchadising oficial</h2>
+
+    <section class="d-flex flex-row flex-wrap row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        {% for item, product in products %}
+        <div class="d-flex p-3">
+            <div class="card clicable border-0"
+                onclick="window.location.href='{{ base_path() }}/tienda/{{ item }}';">
+                <div class="card-body d-flex">
+                    <img src="{{ product.image }}" alt="{{ product.name }}" class="card-img m-auto">
+                </div>
+                <div class="card-footer border-0 px-1">
+                    <div class="d-flex flex-wrap align-items-center gap-1">
+                        <a href="{{ base_path() }}/tienda/{{ item }}" class="fw-semibold me-auto">{{ product.name }}</a>
+                        <span class="badge col-auto bg-success-subtle text-reset px-2 rounded-pill border ms-auto"> 
+                            {{ product.price }} &euro;
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </section>
+</section>
+{% endblock %}

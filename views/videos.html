@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<!-- Imagen Cabecera-->
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1> {{ title }} </h1>
+                    <span class="subheading">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Información -->
+<section class="container my-3">
+    <h2>¡Descubre nuestra colección de Learning Pills! &#127916;</h2>
+    <p>
+        Explora nuestra colección de Learning Pills, donde encontrarás contenido breve y dinámico sobre una variedad de
+        temas relacionados con el aprendizaje del inglés.
+        Desde consejos y trucos para mejorar tu gramática hasta prácticas de pronunciación y ejercicios de comprensión
+        auditiva,
+        nuestros videos están diseñados para ayudarte a alcanzar tus objetivos de aprendizaje de manera efectiva y
+        entretenida.
+    </p>
+    <p class="text-center fw-semibold">
+        ¡Prepárate para descubrir nuevas habilidades lingüísticas y mejorar tu fluidez con nuestros videos educativos!
+    </p>
+</section>
+
+<!-- Bloque de Videos -->
+<section class="container">
+    <div class="row row-cols-1 row-cols-lg-2">
+
+        {% for video in videos %}
+        <div class="col py-2">
+            <article id="video_{{loop.index}}" class="card bg-black shadow p-0" width="640px" data-bs-theme="dark">
+                <h3 class="card-header fw-semibold fs-6">{{ video.name }}</h3>
+
+                <div class="video-container">
+                    <iframe width="100%" height="360" src="{{ video.link }}" class="rounded-bottom-2"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </article>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="container mb-4">
+        <button type="button" id="load-more" class="btn btn-block btn-outline-secondary rounded-2"
+            data-total-videos="{{ videos|length }}">Cargar más</button>
+    </div>
+</section>
+
+{% endblock %}

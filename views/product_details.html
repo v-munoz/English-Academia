@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<!-- Imagen Cabecera-->
+<header class="masthead">
+  <div class="overlay"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1> {{ title }} </h1>
+          <span class="subheading">
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- breadcrumb -->
+
+<nav class="container-fluid px-0 pt-0" aria-label="Navegación">
+  <ol class="breadcrumb bg-body-tertiary border rounded-0">
+    <li class="breadcrumb-item">
+      <a class="link-body-emphasis fw-semibold text-decoration-none bi-house-door-fill" href="{{ base_path() }}">
+        Inicio</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a class="link-body-emphasis fw-semibold text-decoration-none" href="{{ base_path() }}/tienda">Tienda</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+      {{ product.name }}
+    </li>
+  </ol>
+</nav>
+
+
+
+<!-- Producto-->
+<div class="container my-5">
+  <form id="cartForm" method="post" action="{{ base_path() }}/add-to-cart" enctype="multipart/form-data"
+    class="needs-validation" novalidate>
+    <div class="row row-cols-1 row-cols-md-2">
+
+      <!-- Imagen -->
+      <div class="col col-md-6 text-center mb-4">
+        <div class="container rounded-2">
+          <img id="mainImage" src="{{ product.image }}" alt="{{ product.name }}" class="clicable rounded-2"
+            data-bs-toggle="modal" data-bs-target="#modalZoom">
+        </div>
+
+        <!-- Miniaturas -->
+        {% if product.options is defined %}
+        <div class="row row-cols-auto justify-content-center mt-2">
+          {% for option, image_option in product.options %}
+          <img src="{{ image_option }}" alt="Opción {{ option }}" class="thumbnail img-thumbnail clicable"
+            onclick="changeImage('{{ image_option }}', '{{ option }}')">
+          {% endfor %}
+          <input type="hidden" name="option" id="optionInput"
+            value="{{ option | default(product.options|keys|first) }}" />
+        </div>
+        {% endif %}
+        <input type="hidden" name="image" id="imageInput" value="{{ image_option | default(product.image) }}" />
+      </div>
+
+      <!-- Detalles -->
+      <div class="col col-md-6">
+        <!-- Nombre y precio -->
+        <div class="d-flex align-items-center justify-content-between border-bottom border-dark">
+          <h3>{{ product.name }}</h3>
+          <input type="hidden" name="product" value="{{product.name}}">
+          <h3 class="fs-3 fw-medium">{{ product.price }}&euro;</h3>
+          <input type="hidden" name="price" value="{{product.price}}">
+        </div>
+
+        {% if product.hasSize is defined and product.hasSize %}
+        <!-- Tallas -->
+        <label class="fw-medium pt-3" for="size">Talla</label>
+        <div class="row row-cols-auto justify-content-center align-items-center pb-3 position-relative">
+          <div class="form-check form-check-inline">
+            <input type="radio" class="btn-check" name="size" id="S" value="S" autocomplete="off" required>
+            <label class="btn btn-outline-dark rounded-2 px-3 py-2" for="S">S</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="btn-check" name="size" id="M" value="M" autocomplete="off">
+            <label class="btn btn-outline-dark rounded-2 px-3 py-2" for="M">M</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="btn-check" name="size" id="L" value="L" autocomplete="off">
+            <label class="btn btn-sm btn-outline-dark rounded-2 px-3 py-2" for="L">L</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="btn-check" name="size" id="XL" value="XL" autocomplete="off">
+            <label class="btn btn-outline-dark rounded-2 px-3 py-2" for="XL">XL</label>
+          </div>
+        </div>
+
+        <div id="validation-for-size" class="invalid-feedback text-center fw-semibold">Seleccione una talla.</div>
+        {%endif%}
+
+        <!-- Cantidad -->
+        <label class="fw-medium mt-3" for="quantity">Cantidad</label>
+        <div class="d-flex justify-content-center align-items-center pb-3">
+          <button type="button" id="btnReduceQuantity" class="btn btn-light bi-dash-lg rounded-1 p-2"
+            onclick="modifyQuantity('reduce')" aria-label="Reducir cantidad del producto"
+            title="Reducir cantidad"></button>
+          <input class="form-control-plaintext bg-light text-center w-50 fw-bold rounded-1 mx-1 ps-3"
+            aria-label="quantity" id="quantity" type="text" name="quantity" value="1" readonly> </input>
+          <button type="button" id="btnIncreaseQuantity" class="btn btn-light bi-plus-lg rounded-1 p-2"
+            onclick="modifyQuantity('increase')" aria-label="Aumentar cantidad del producto"
+            title="Aumentar cantidad"></button>
+        </div>
+
+        <!-- Btn Comprar -->
+        <div class="d-flex justify-content-center pt-3">
+          <button class="btn btn-primary btn-block mx-5 rounded-2" name="addToCart" type="submit" id="btnAddToCart"
+            title="Añadir al pedido">
+            Añadir al pedido
+          </button>
+        </div>
+
+        <!-- Accordion Descripcion -->
+        <div class="accordion accordion-flush py-4" id="accordionInfo">
+          <div class="accordion-item bg-transparent">
+            <h5 class="accordion-header">
+              <button class="accordion-button bg-transparent text-black fs-5 fw-medium collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                aria-controls="collapseOne" title="Expandir descripción del producto">
+                Descripción
+              </button>
+            </h5>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
+              <div class="accordion-body fs-6">
+                {{ product.description }}
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item bg-transparent">
+            <h5 class="accordion-header">
+              <button class="accordion-button bg-transparent text-black fs-5 fw-medium collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                aria-controls="collapseTwo" title="Expandir información sobre los materiales del producto">
+                Materiales
+              </button>
+            </h5>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
+              <div class="accordion-body fs-6">
+                {{ product.materials }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Modal Zoom -->
+<div class="modal fade" id="modalZoom" tabindex="-1" aria-labelledby="modalZoomLabel" aria-hidden="true">
+
+  <!-- Botón de cerrar pop-up -->
+  <button type="button" class="btn-close btn-close-white position-fixed top-0 end-0 p-3" data-bs-dismiss="modal"
+    data-bs-target="#modalZoom" aria-label="Cerrar la ventana completa" title="Cerrar"></button>
+
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-body">
+      <img id="zoomImage" src="{{ product.image }}" alt="{{ product.name }}" class="d-block">
+    </div>
+  </div>
+</div>
+
+<!-- Modal Confirmacion -->
+<div class="modal fade" id="cartConfirmation" tabindex="-1" aria-labelledby="cartConfirmationLabel" aria-hidden="true">
+  <div class="modal-dialog pt-2">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title fs-6 fw-semibold" id="cartConfirmationLabel">El producto se ha añadido correctamente al
+          carrito.</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" title="Cerrar"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

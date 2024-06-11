@@ -1,0 +1,47 @@
+[
+    {
+        "name" : "Tarde de películas en Inglés",
+        "description" : "Disfruta de las mejores películas en VOSE",
+        "place" : "Cine de la ciudad",
+        "city" : "Talavera de la Reina",
+        "date" : "23-02-2024, 18:30",
+        "opening" : "18:00",
+        "qr" : "https://external-preview.redd.it/cg8k976AV52mDvDb5jDVJABPrSZ3tpi1aXhPjgcDTbw.png?auto=webp&s=1c205ba303c1fa0370b813ea83b9e1bddb7215eb"
+    },
+    {
+        "name" : "Noche de juegos de mesa",
+        "description": "Aprende inglés mientras juegas",
+        "place" : "English Academia",
+        "city" : "Talavera de la Reina",
+        "date" : "31-12-2024, 22:00",
+        "opening" : "21:30",
+        "qr" : "https://external-preview.redd.it/cg8k976AV52mDvDb5jDVJABPrSZ3tpi1aXhPjgcDTbw.png?auto=webp&s=1c205ba303c1fa0370b813ea83b9e1bddb7215eb"
+    },
+    {
+        "name" : "Club de lectura",
+        "description": "Apuntaté a nuestro club de lectura en inglés",
+        "place" : "English Academia",
+        "city" : "Talavera de la Reina",
+        "date" : "01-08-2024, 12:15",
+        "opening" : "12:00",
+        "qr" : "https://external-preview.redd.it/cg8k976AV52mDvDb5jDVJABPrSZ3tpi1aXhPjgcDTbw.png?auto=webp&s=1c205ba303c1fa0370b813ea83b9e1bddb7215eb"
+    },
+    {
+        "name" : "Conversation Café",
+        "description": "Únete a nuestro grupo de conversación informal y mejora tu inglés mientras disfrutas de un café",
+        "place" : "Cafetería cercana",
+        "city" : "Talavera de la Reina",
+        "date" : "01-03-2025, 16:10",
+        "opening" : "16:00",
+        "qr" : "https://external-preview.redd.it/cg8k976AV52mDvDb5jDVJABPrSZ3tpi1aXhPjgcDTbw.png?auto=webp&s=1c205ba303c1fa0370b813ea83b9e1bddb7215eb"
+    },
+    {
+        "name" : "Final 6 Nations",
+        "description": "Disfruta de la emoción del rugby en inglés junto a otros aficionados con una experiencia inmersiva",
+        "place" : "Pub irlandés",
+        "city" : "Talavera de la Reina",
+        "date" : "01-03-2024, 20:00",
+        "opening" : "19:30",
+        "qr" : "https://external-preview.redd.it/cg8k976AV52mDvDb5jDVJABPrSZ3tpi1aXhPjgcDTbw.png?auto=webp&s=1c205ba303c1fa0370b813ea83b9e1bddb7215eb"
+    }
+]

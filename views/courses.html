@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<!-- Bloque cabecera sección -->
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1> {{ title }} </h1>
+                    <span class="subheading"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="container my-4">
+    <h2>Nuestros cursos</h2>
+    <p>
+        En English Academia, creemos que aprender inglés debe ser una experiencia personalizada, flexible y efectiva.
+        Por eso, ofrecemos una amplia variedad de cursos diseñados para satisfacer las necesidades de cada estudiante,
+        desde principiantes hasta avanzados.
+    </p>
+    <br>
+    <h3 class="fs-4">¿Qué hace que nuestros cursos sean únicos? &#128640;</h2>
+    <ul>
+        <li><strong>Metodología personalizada</strong> &#127919;: Adaptamos nuestra enseñanza a tus necesidades y estilo
+            de aprendizaje, para que puedas avanzar a tu ritmo.</li>
+        <li><strong>Profesores expertos</strong> &#127891;: Contamos con un equipo de profesores altamente cualificados
+            y apasionados por la enseñanza del inglés. &#127468;&#127463;</li>
+        <li><strong>Grupos reducidos</strong> &#128101;: Te beneficiarás de una mayor atención personalizada en clases
+            con grupos reducidos.</li>
+        <li><strong>Materiales actualizados</strong> &#128218;: Utilizamos materiales didácticos de última generación
+            para que tu aprendizaje sea efectivo y dinámico.</li>
+        <li><strong>Clases dinámicas y divertidas</strong> &#127881;: Aprenderás inglés de forma amena y motivadora con
+            nuestras clases interactivas y participativas.</li>
+        <li><strong>Flexibilidad</strong> &#9203;: Te ofrecemos horarios flexibles para que puedas estudiar a tu ritmo y
+            compatibilizarlo con tu vida diaria.</li>
+    </ul>
+    <br>
+    <p>
+        <strong>¿Estás listo para dar el siguiente paso en tu aprendizaje del inglés?</strong>
+        <br>
+        ¡Contáctanos hoy mismo para obtener más información sobre nuestros cursos y cómo podemos ayudarte a alcanzar tus
+        objetivos!
+    </p>
+</section>
+
+<!-- Bloque de courses -->
+<section class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 justify-content-center mb-5">
+
+        {% for course in courses %}
+        <div class="flex-column align-items-stretch p-3">
+            <article class="card border-0 clicable h-100">
+                <div class="card-header border-0 p-0 m-0">
+                    <img src="{{ course.image }}" alt="{{ course.name }}" class="card-img-top">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ course.name }}</h4>
+                    <p class="card-subtitle small">{{ course.description }}</p>
+                </div>
+                <div class="card-footer border-0 mb-1">
+                    <h5 class="fs-6">Disponible en estos niveles:</h5>
+                    <div class="d-flex flex-wrap gap-2 justify-content-center">
+                        {% for levels, lvl in course.levels %}
+                            <div class="badge text-reset bg-success-subtle rounded-pill px-2">{{ lvl }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </article>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

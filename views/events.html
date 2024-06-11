@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<!-- Imagen Cabecera-->
+<header class="masthead">
+  <div class="overlay"></div>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+              <div class="page-heading">
+                  <h1> {{ title }} </h1>
+                  <span class="subheading">
+                    En English Academy ofrecemos una gran variedad de eventos para que practiques tu inglés y te diviertas al mismo tiempo.
+                  </span>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+
+<!--Proximos eventos-->
+<section class="container justify-content-center">
+
+    <!-- Eventos -->
+    {% for event in events %}
+    <article class="mb-5">
+        <div class="ticket row">
+            <div class="col-12 col-md-8 ticket-{{page % 2}}"> <!-- Cambiar page por loop.index cuando se muestren más de 2 eventos por página -->
+                <p class="date">
+                    <span class="weekday text-capitalize">{{event.date}}</span>
+                    <span class="day text-center text-uppercase">{{event.date}}</span>
+                    <span class="year">{{event.date}}</span>
+                </p>
+                <div class="text-center">
+                    <h1>{{ event.name }}</h1>
+                    <p>{{ event.description }}</p>
+                </div>
+                <div class="time">
+                    <h3 class="hour">{{ event.date}}h</h3>
+                    <span class="small">Hora de reunión: {{event.opening}}</span>
+                </div>
+                <h4 class="location">
+                    <span class="col-5 text-center">{{ event.city }}</span>
+                    <span><img src="images/favicon/android-chrome-192x192.png" alt="Logotipo de English Academia" width="35px"></span>
+                    <span class="col-5 text-center">{{ event.place }}</span>
+                </h4>
+            </div>
+            <!-- Info lateral, pasa a inferior cuando es md -->
+            <div class="col-12 col-md-4 ticket-side d-grid align-items-between gap-3">
+                <div class="mt-md-3">
+                    <h2>English Academia</h2>
+                </div>
+                <div class="qr">
+                    <img src="{{ event.qr }}" alt="Código QR">
+                </div>
+                <a href="{{ base_path() }}/eventos" class="btn btn-success rounded-2 align-self-end mb-2">Entradas</a>
+
+            </div>
+        </div>
+    </article>
+    {% endfor %}  
+</section>
+
+<!-- Pagination -->
+<nav class="d-flex justify-content-center py-3" aria-label="Paginación">
+    <ul class="pagination gap-3">
+        <!-- Si la página actual es la primera, deshabilita el botón de pág anterior -->
+        {% if page == 1 %}
+            <li class="page-item">
+                <span class="page-link disabled"><i class="bi-chevron-left"></i></span>
+            </li>
+        <!-- Si no, muestra el botón de pág anterior -->
+        {% else %}
+            <li class="page-item">
+                <a class="page-link" href="{{ base_path() }}/eventos?page={{ page - 1 }}"><i class="bi-chevron-left"></i></a>
+            </li>
+        {% endif %}
+        
+        <!-- Siempre muestra la primera página -->
+        {% if startPage > 1 %}
+            <li class="page-item">
+                <a class="page-link" href="{{ base_path() }}/eventos">1</a>
+            </li>
+        {% endif %}
+        
+        <!-- Si hay páginas antes del rango visible, muestra puntos suspensivos -->
+        {% if startPage > 2%}
+            <li class="page-item">
+                <a class="page-link disabled">...</a>
+            </li>
+        {% endif %}
+        
+
+        <!-- Itera sobre las páginas visibles -->
+        {% for i in startPage..endPage %}
+            <!-- Muestra la página activa -->
+            {% if i == page %}
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">{{ i }}</span>
+                </li>
+            <!-- Si no es la página actual, muestra un enlace a esa página -->
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ base_path() }}/eventos?page={{ i }}">{{ i }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        <!-- Si hay páginas después del rango visible, muestra puntos suspensivos -->
+        {% if endPage < (totalPages-1) %}
+            <li class="page-item">
+                <a class="page-link disabled">...</a>
+            </li>
+        {% endif %}
+        <!-- Siempre muestra la última página -->
+        {% if endPage < totalPages %}
+            <li class="page-item">
+                <a class="page-link" href="{{ base_path() }}/eventos?page={{ totalPages }}">{{ totalPages }}</a>
+            </li>
+        {% endif %}
+
+        <!-- Si la página actual es la última, deshabilita el botón de pág siguiente -->
+        {% if page == totalPages %}
+            <li class="page-item">
+                <span class="page-link disabled"><i class="bi-chevron-right"></i></span>
+            </li>
+        <!-- Si no es la última, muestra el botón de pág siguiente -->
+        {% else %}
+            <li class="page-item">
+                <a class="page-link" href="{{ base_path() }}/eventos?page={{ page + 1 }}"><i class="bi-chevron-right"></i></a>
+            </li>
+        {% endif %}
+        </ul>
+</nav>
+
+
+{% endblock %}

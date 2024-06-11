@@ -1,0 +1,45 @@
+{
+  "libros-de-ingles" : {
+    "name": "Libros de Inglés",
+    "price": 19.95,
+    "image": "public/images/Libro-A1.png",
+    "options": {
+      "A1": "public/images/Libro-A1.png",
+      "B2": "public/images/Libro-B2.png",
+      "C2": "public/images/Libro-C2.png"
+    },
+    "description" : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta reprehenderit cum error vel ipsa eos? Culpa explicabo iusto fuga officiis. Cumque quod alias architecto, officia magni enim excepturi consequatur inventore.",
+    "materials" : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta reprehenderit cum error vel ipsa eos? Culpa explicabo iusto fuga officiis. Cumque quod alias architecto, officia magni enim excepturi consequatur inventore."
+  },
+  
+  "camisetas" : {
+    "name": "Camiseta",
+    "hasSize": true,
+    "price": 12.45,
+    "image": "https://th.bing.com/th/id/OIG1.wY4k8krNh06_FN0EgNGx?pid=ImgGn",
+    "options": {
+      "negro": "https://th.bing.com/th/id/OIG1.wY4k8krNh06_FN0EgNGx?pid=ImgGn",
+      "rojo": "https://th.bing.com/th/id/OIG2.s3F28_4kk00wy8D1PpHO?pid=ImgGn",
+      "azul": "https://th.bing.com/th/id/OIG4.E5OP2r7Hvsjhb01k_G78?pid=ImgGn",
+      "blanco": "https://th.bing.com/th/id/OIG1.8RI5epmmMttJXo78_OhW?pid=ImgGn"
+    },
+    "description" : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta reprehenderit cum error vel ipsa eos? Culpa explicabo iusto fuga officiis. Cumque quod alias architecto, officia magni enim excepturi consequatur inventore.",
+    "materials" : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta reprehenderit cum error vel ipsa eos? Culpa explicabo iusto fuga officiis. Cumque quod alias architecto, officia magni enim excepturi consequatur inventore."
+  },
+
+  "taza" : {
+    "name": "Taza",
+    "price": 4.99,
+    "image": "http://2.bp.blogspot.com/_dESVRqL6YCs/TNVwFv3U26I/AAAAAAAAJeA/Xr_H9XvKjEE/s1600/Taza+en+vector+(Vector+Mug).png",
+    "description" : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta reprehenderit cum error vel ipsa eos? Culpa explicabo iusto fuga officiis. Cumque quod alias architecto, officia magni enim excepturi consequatur inventore.",
+    "materials" : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta reprehenderit cum error vel ipsa eos? Culpa explicabo iusto fuga officiis. Cumque quod alias architecto, officia magni enim excepturi consequatur inventore."
+  },
+
+  "tote-bag" : {
+    "name": "Tote Bag",
+    "price": 5.55,
+    "image": "http://promomachine.com.au/shared/img/baseProducts/9583c1b1512dfa38006d107b772ad670.jpg",
+    "description" : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta reprehenderit cum error vel ipsa eos? Culpa explicabo iusto fuga officiis. Cumque quod alias architecto, officia magni enim excepturi consequatur inventore.",
+    "materials" : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta reprehenderit cum error vel ipsa eos? Culpa explicabo iusto fuga officiis. Cumque quod alias architecto, officia magni enim excepturi consequatur inventore."
+  }
+}

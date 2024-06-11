@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<!-- Imagen Cabecera-->
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-9 mx-auto">
+                <div class="page-heading">
+                    <h1>{{ title }}</h1>
+                    <span class="subheading">
+                        Esta web, desarrollada con PHP Slim, cuenta con un pequeño ecommerce que permite adquirir cursos
+                        y materiales de forma sencilla y segura.
+                        <br><br>El contenido original ha sido modificado para proteger los datos privados y se ha
+                        recontextualizado a una academia de inglés.
+                        <br><br>No utiliza bases de datos, almacena el carrito en sesión y gestiona los pedidos por
+                        email por requerimientos del cliente.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--Formulario newsletter-->
+<section class="container pt-3 pb-5">
+    <h2>¡La academia de inglés perfecta para ti!</h2>
+    <p>
+        ¡Bienvenido a nuestra Academia de Inglés! Nos especializamos en ofrecer clases de inglés personalizadas y
+        adaptadas a tus necesidades y objetivos.
+        Nuestra misión es brindarte una enseñanza de calidad, centrada en una experiencia de aprendizaje única y
+        efectiva que te ayudará a alcanzar la fluidez en inglés de manera natural.
+        Únete a nosotros y descubre una nueva forma de aprender.
+    </p>
+    <p>
+        No te pierdas nuestras actualizaciones y recursos exclusivos.
+        ¡<strong>Suscríbete a nuestra newsletter</strong> 📬 y mantente al día con nuestras novedades, promociones y
+        consejos para mejorar tu inglés!
+    </p>
+    <form id="newsletterForm" method="post" action="{{ base_path() }}/send-newsletter" enctype="multipart/form-data"
+        class="mt-3 needs-validation" novalidate>
+        <div class="col col-12 col-md-8 col-lg-6 mx-auto text-center">
+            <div class="form-floating">
+                <input type="email" class="form-control rounded-2" id="email" name="email"
+                    placeholder="tucorreo@example.com" aria-describedby="emailNewsletter" value="" required>
+                <label for="email" class="small">Email</label>
+                <div class="invalid-feedback">Por favor, introduce un correo electrónico válido.</div>
+            </div>
+
+            <button type="submit" name="newsletter" title="Unirse a la newsletter"
+                class="btn btn-block btn-primary rounded-2 mt-2" title="Enviar solicitud a la newsletter">
+                Unirse <i class="bi bi-caret-right-fill"></i>
+            </button>
+        </div>
+    </form>
+
+</section>
+
+<!-- Eventos -->
+<section class="container">
+    <a href="{{ base_path() }}/eventos" class="text-decoration-none">
+        <h2 class="text-center pb-2">Próximos eventos</h2>
+    </a>
+
+    <article class="mb-5">
+        <div class="ticket row">
+            <div class="col-12 col-md-8 ticket-0">
+                <p class="date">
+                    <span class="weekday text-capitalize">{{next_event.date}}</span>
+                    <span class="day text-center text-uppercase">{{next_event.date}}</span>
+                    <span class="year">{{next_event.date}}</span>
+                </p>
+                <div class="text-center">
+                    <h1>{{ next_event.name }}</h1>
+                    <p>{{ next_event.description }}</p>
+                </div>
+                <div class="time">
+                    <h3 class="hour">{{ next_event.date}}h</h3>
+                    <span class="small">Hora de reunión: {{next_event.opening}}</span>
+                </div>
+                <h4 class="location">
+                    <span class="col-5 text-center">{{ next_event.city }}</span>
+                    <span><img src="images/favicon/android-chrome-192x192.png" alt="Logotipo de English Academia"
+                            width="35px"></span>
+                    <span class="col-5 text-center">{{ next_event.place }}</span>
+                </h4>
+            </div>
+            <!-- Info lateral, pasa a inferior cuando es md -->
+            <div class="col-12 col-md-4 ticket-side d-grid align-items-between gap-3">
+                <div class="mt-md-3">
+                    <h2>English Academia</h2>
+                </div>
+                <div class="qr">
+                    <img src="{{ next_event.qr }}" alt="Código QR">
+                </div>
+                <a href="{{ base_path() }}/eventos" class="btn btn-success rounded-2 align-self-end">Entradas</a>
+                <a href="{{ base_path() }}/eventos" class="btn text-end align-self-end">
+                    Ver más <i class="bi bi-caret-right-fill"></i>
+                </a>
+            </div>
+        </div>
+
+    </article>
+</section>
+
+
+
+<!-- Novedades (2 columnas/1) -->
+<section class="container pb-5">
+    <h2 class="text-center">Novedades</h2>
+    <div class="row row-cols-1 row-cols-md-2 mt-4 border-top justify-content-between">
+
+        <!-- Último curso -->
+        <div class="col">
+            <a href="{{ base_path() }}/cursos" class="text-decoration-none">
+                <h3 class="text-center ps-3 pt-4 pb-2">Cursos</h3>
+            </a>
+            <div class="card border-0">
+                <div class="card-header border-0">
+                    <h4 class="card-title fs-5 mb-0">{{ last_course.name }}</h4>
+                </div>
+                <div class="card-body d-flex flex-wrap">
+                    <img src="{{ last_course.image }}" alt="{{ last_course.name }}" class="img-fluid col-6"/>
+                    <p class="card-text small col-6">{{ last_course.description }}</p>
+
+                </div>
+                <div class="card-footer border-0 p-0">
+                    <a href="{{ base_path() }}/videos" class="btn btn-outline-secondary border-0 float-end">
+                        Ver más <i class="bi bi-caret-right-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Último vídeo -->
+        <div class="col">
+            <a href="{{ base_path() }}/videos" class="text-decoration-none">
+                <h3 class="text-center ps-3 pt-4 pb-2">Vídeos</h3>
+            </a>
+            <div class="card border-0">
+                <div class="card-header border-0">
+                    <h4 class="card-title fs-5 mb-0">{{ last_video.name }}</h4>
+                </div>
+                <div class="card-body p-0 m-0">
+                    <div class="video-container">
+                        <iframe width="100%" height="360" src="{{ last_video.link }}" title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen width="640px">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="card-footer border-0 p-0">
+                    <a href="{{ base_path() }}/videos" class="btn btn-outline-secondary border-0 float-end">
+                        Ver más <i class="bi bi-caret-right-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock %}

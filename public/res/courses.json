@@ -1,0 +1,45 @@
+[
+  {
+    "name": "Clases de inglés presencial",
+    "image": "https://th.bing.com/th/id/OIG1.SsFvL8WGF5J6nuKqGV4o?pid=ImgGn",
+    "description" : "En English Academia te ofrecemos cursos presenciales para todos los niveles, desde principiantes hasta avanzados, donde podrás disfrutar de clases dinámicas y participativas y grupos reducidos",
+    "levels" : ["Básico", "Intermedio", "Avanzado"]
+  },
+  {
+    "name": "Curso de inglés online para niños y jóvenes",
+    "image": "https://th.bing.com/th/id/OIG4.OlHgvBi58MFu4cvhrjjt?pid=ImgGn",
+    "description" : "El curso de año académico online es la combinación perfecta de clases virtuales con el profesor, proyectos interactivos, y actividades individuales para consolidar lo aprendido.",
+    "levels" : ["Básico", "Intermedio", "Avanzado"]   
+  },
+  {
+    "name": "Tutores online para adolescentes",
+    "image": "https://th.bing.com/th/id/OIG1.nPZdENIz4grVY2Gsg2s2?pid=ImgGn",
+    "description" : "Logra tus objetivos con las clases particulares en línea 1:1 para jóvenes de 13 a 17 años.",
+    "levels" : ["Básico", "Intermedio"]
+  },
+  {
+    "name": "Preparación para Exámenes Oficiales",
+    "image": "https://th.bing.com/th/id/OIG1.5QBj7GCTh8wXaXuujb59?w=1024&h=1024&rs=1&pid=ImgDetMain",
+    "description" : "Curso intensivo para preparar exámenes como el TOEFL, IELTS, Cambridge (FCE, CAE, CPE). Incluye simulacros de examen y técnicas de test.",
+    "levels" : ["Básico", "Intermedio", "Avanzado"]
+  },
+  {
+    "name": "Preparación del C2 Proficiency Exam",
+    "image": "https://th.bing.com/th/id/OIG2.3Ak_YqnhRRpS4txH2uBO?pid=ImgGn",
+    "description" : "Aprende en nuestro curso las técnicas, trucos y consejos que te ayudarán a afrontar el examen de Cambridge English: Proficiency.",
+    "levels" : ["Avanzado"]
+    
+  },
+  {
+    "name": "Inglés para negocios",
+    "image": "https://th.bing.com/th/id/OIG3._ohIFRdQ.qZf5TJ2DuY4?w=1024&h=1024&rs=1&pid=ImgDetMain",
+    "description" : "Curso enfocado en el inglés utilizado en el entorno empresarial, incluyendo presentaciones, reuniones, negociaciones y correspondencia.",
+    "levels" : ["Básico", "Intermedio", "Avanzado"]
+  },
+  {
+    "name": "Curso de Conversación en Inglés",
+    "image": "https://th.bing.com/th/id/OIG1.iDKPn.ST3P1sQliDEhaj?w=1024&h=1024&rs=1&pid=ImgDetMain",
+    "description" : "Clases enfocadas exclusivamente en mejorar la fluidez y confianza al hablar, con temas variados y actuales.",
+    "levels" : ["Intermedio", "Avanzado"]    
+  }
+]

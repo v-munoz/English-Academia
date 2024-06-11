@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<!-- Imagen Cabecera-->
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1> {{ title }} </h1>
+                    <span class="subheading">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Galeria -->
+<div class="container my-5">
+    <div class="image-gallery">
+        {% for item in media %}
+        <div class="column d-flex">
+            <img src="{{ item.url }}" alt="{{ item.alt }}" class="img-fluid clicable" data-bs-toggle="modal" data-bs-target="#modalMultimedia" data-bs-slide-to="{{ loop.index - 1 }}">
+        </div>
+        {% endfor %}
+    </div>
+    
+
+
+    <!-- Modal pop up-->
+    <div class="modal fade" id="modalMultimedia" tabindex="-1" aria-labelledby="modalMultimediaLabel" aria-hidden="true">
+        <!-- Botón de cerrar pop-up -->
+        <button type="button" class="btn-close btn-close-white position-fixed top-0 end-0 p-3" data-bs-dismiss="modal" data-bs-target="#modalMultimedia"
+            aria-label="Cerrar la ventana completa" title="Cerrar">
+        </button>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" data-bs-theme="light">
+            
+            <!-- Carusel de imágenes de la galería -->
+            <div id="carouselMultimedia" class="carousel slide">
+                <div class="carousel-inner">
+                    <!-- Auto-generado en Javascript -->
+                </div>
+                <!-- Controles de navegación -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselMultimedia" data-bs-slide="prev" aria-label="Imagen anterior" title="Imagen anterior">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselMultimedia" data-bs-slide="next" aria-label="Siguiente imagen" title="Siguiente imagen">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>  
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

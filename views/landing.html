@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<html lang="es" data-bs-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+
+    <meta name="description"
+        content="Este proyecto consiste en una aplicación PHP utilizando Slim Framework como parte de mis prácticas FCT. El contenido original ha sido modificado para proteger los datos privados." />
+
+    <meta property="og:image" content="" />
+
+    <meta property="og:url" content="">
+
+    <meta name="keywords" content="" />
+
+    <meta name="author" content="AdHunt3rs" />
+    <meta name="copyright" content="Víctor Muñoz" />
+    <meta name="robots" content="index,follow" />
+
+    <title>{{ title }}</title>
+
+    <!-- Base de las rutas del proyecto -->
+    <!-- Sin base no cargan las subvistas -->
+    <base href="{{ base_path() }}/" />
+
+
+    <!--Estilos CSS-->
+    <!--Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <!--Jekyll Clean Blog Template-->
+    <link rel="stylesheet" type="text/css" href="css/jekyll-clean-blog.css" />
+
+    <!--Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico" />
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/favicon/android-chrome-192x192.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="is-preload">
+    <div class="page-wrapper min-vh-100">
+        <header>
+            <!-- Encabezado: foto, botón subscribirse-->
+            <nav class="navbar container text-center justify-content-center mt-3">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#landingModal"
+                    title="Unirse a la newsletter"
+                    class="btn rounded-pill bg-success text-white mb-2 mb-sm-0 ms-sm-auto">
+                    <i class="bi bi-bell-fill">
+                        <span class="ms-2">Suscribirse</span>
+                    </i>
+                </button>
+
+                <!-- Modal Suscribirse Newsletter -->
+                <div class="modal fade" id="landingModal" aria-labelledby="landingModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="post" action="{{ base_path() }}/send-newsletter" enctype="multipart/form-data"
+                                class="form-group" id="newsletterForm">
+
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5">NewsLetter</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"
+                                        title="Cerrar"></button>
+                                </div>
+                                <div class="modal-body text-start">
+                                    <p class="mt-0">Suscribete a la newsletter de English Academia para conocer
+                                        todas las novedades.</p>
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="user@example.com"
+                                        value="" required>
+                                </div>
+                                <div class="modal-footer justify-content-center border-0 pb-0">
+                                    <button type="submit" name="newsletter" class="btn btn-primary btn-sm btn-block rounded-pill"
+                                        title="Enviar solicitud a la newsletter">
+                                        Apuntarse</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <img src="images/favicon/android-chrome-512x512.png" alt="Logo de English Academy" height="200px" class="rounded-circle" />
+                    <h1 class="mt-2">English Academia</h1>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Modal Confirmacion para la NewsLetter -->
+        <div class="modal fade" id="newsletterConfirmation" tabindex="-1" aria-labelledby="newsletterConfirmationLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        ¡Te has suscrito a la newsletter correctamente!
+                        <button type="button" class="btn-close btn-sm position-absolute end-0 top-0 p-2"
+                            data-bs-dismiss="modal" aria-label="Cerrar" title="Cerrar"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <main>
+            <!-- Links RRSS horizontales -->
+            <div class="d-flex list-group-horizontal justify-content-center align-items-center gap-2 gap-md-3 mb-4">
+                <a href="https://www.facebook.com" target="_blank" rel="noopener">
+                    <img src="images/rrss/Facebook_white_logo.png" alt="FaceBook" height="30px"
+                        class="list-group-item-dark imgBW">
+                </a>
+
+                <a href="https://www.youtube.com" target="_blank" rel="noopener">
+                    <img src="images/rrss/icons8-youtube.svg" alt="YouTube" height="45px"
+                        class="list-group-item-dark imgBW">
+                </a>
+
+                <a href="https://instagram.com" target="_blank" rel="noopener">
+                    <img src="images/rrss/icons8-instagram.svg" alt="Instagram" height="35px"
+                        class="list-group-item-dark imgBW">
+                </a>
+
+                <a href="https://www.tiktok.com" target="_blank" rel="noopener">
+                    <img src="images/rrss/icons8-tik-tok.svg" alt="TikTok" height="35px"
+                        class="list-group-item-dark imgBW">
+                </a>
+
+            </div>
+
+            <!-- Botones bloque -->
+            <div class="container col-10 col-md-8 col-lg-6">
+
+                <a href="https://www.youtube.com" target="_blank" rel="noopener"
+                    class="d-flex btn btn-outline-light text-dark border-0 btn-block rounded-pill shadow justify-content-center align-items-center mb-3">
+                    <img src="images/rrss/youtube_color.svg" alt="YouTube" width="30px">
+                    <div class="d-flex col justify-content-center align-items-center">Últimos vídeos en YouTube</div>
+                </a>
+
+                <a href="https://instagram" target="_blank" rel="noopener"
+                    class="d-flex btn btn-outline-light text-dark border-0 btn-block rounded-pill shadow justify-content-center align-items-center mb-3">
+                    <img src="images/rrss/instagram_color.png" alt="Spotify" width="30px">
+                    <div class="d-flex col justify-content-center align-items-center">Síguenos en Instagram</div>
+                </a>
+
+                <a href="{{ base_path() }}/eventos" target="_blank" rel="noopener"
+                    class="d-flex btn btn-outline-light text-dark border-0 btn-block rounded-pill shadow justify-content-center align-items-center mb-3">
+                    <img src="images/reshot-icon-team-weekend-VRBD785WC6.svg" alt="Eventos" width="30px">
+                    <div class="d-flex col justify-content-center align-items-center">Próximos eventos</div>
+                </a>
+
+                <a href="{{ base_path() }}/tienda" target="_blank" rel="noopener"
+                    class="d-flex btn btn-outline-light text-dark border-0 btn-block rounded-pill shadow justify-content-center align-items-center mb-3">
+                    <img src="images/reshot-icon-shopping-bag-2W4MQJP5DE.svg" alt="Tienda" width="30px">
+                    <div class="d-flex col justify-content-center align-items-center">Tienda</div>
+                </a>
+
+                <a href="{{ base_path() }}" target="_blank" rel="noopener"
+                    class="d-flex btn btn-outline-light text-dark border-0 btn-block rounded-pill shadow justify-content-center align-items-center mb-3">
+                    <img src="images/favicon/android-chrome-192x192.png" alt="Web" width="30px">
+                    <div class="d-flex col justify-content-center align-items-center">English Academia.com</div>
+                </a>
+
+            </div>
+        </main>
+
+
+        <footer>
+            <!-- Copyright -->
+            <div class="copyright container text-center small">
+                <a href="{{url_for('landing')}}#" class="text-decoration-none text-secondary"
+                    id="open_preferences_center">Actualizar ajustes
+                    de cookies</a> -
+                <a href="aviso-legal" class="text-decoration-none text-info">Aviso Legal</a> -
+                <a href="politica-de-cookies" class="text-decoration-none text-info">Política de cookies</a> -
+                <a href="politica-de-privacidad" class="text-decoration-none text-info">Política de privacidad</a>
+                <br>
+                &copy; Víctor Muñoz Pavón.
+            </div>
+        </footer>
+
+    </div>
+
+    <!--Scripts JS-->
+    <!--JQuery-->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <!--Bootstrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <script src="js/main.js"></script>
+
+    <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+    <script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/4.1.0/cookie-consent.js"
+        charset="UTF-8"></script>
+    <script type="text/javascript" charset="UTF-8">
+        document.addEventListener('DOMContentLoaded', function () {
+            cookieconsent.run({
+                "notice_banner_type": "simple",
+                "consent_type": "express",
+                "palette": "light",
+                "language": "es",
+                "page_load_consent_levels": ["strictly-necessary"],
+                "notice_banner_reject_button_hide": false,
+                "preferences_center_close_button_hide": false,
+                "page_refresh_confirmation_buttons": false,
+                "website_name": "NachoRosa",
+                "website_privacy_policy_url": "{{base_path()}}/politica-de-privacidad",
+                "callbacks": {
+                    "scripts_specific_loaded": (level) => {
+                        switch (level) {
+                            case 'targeting':
+                                gtag('consent', 'update', {
+                                    'ad_storage': 'granted',
+                                    'ad_user_data': 'granted',
+                                    'ad_personalization': 'granted',
+                                    'analytics_storage': 'granted'
+                                });
+                                break;
+                        }
+                    }
+                },
+                "callbacks_force": true
+            });
+        });
+    </script>
+
+    <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+    <!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+
+    <!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=TAG_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+        });
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+
+        gtag('js', new Date());
+        gtag('config', 'TAG_ID');
+    </script>
+
+
+
+</body>
+
+</html>

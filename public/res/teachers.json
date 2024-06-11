@@ -1,0 +1,32 @@
+[
+    {
+        "name" : "Elizabeth Rochester",
+        "photo" : "images/Elizabeth.png",
+        "position" : "Directora Académica",
+        "bio" : "Elizabeth Rochester es una profesional dedicada con más de quince años de experiencia en la enseñanza del inglés y la gestión académica. Como Directora Académica, Elizabeth supervisa la calidad educativa y coordina el desarrollo curricular de la academia. Además, es especialista en la preparación de exámenes internacionales como TOEFL, IELTS y Cambridge, ayudando a los estudiantes a alcanzar sus metas académicas y profesionales."
+    },
+    {
+        "name" : "Sophia Grant",
+        "photo" : "images/Sophia.png",
+        "position" : "Profesora de Preparación de Exámenes",
+        "bio" : "Sophia Grant es una experimentada profesora especializada en la preparación de exámenes de inglés. Con su enfoque estructurado y su profundo conocimiento de los distintos exámenes internacionales, Sophia guía a sus estudiantes a través de estrategias efectivas y prácticas de estudio para alcanzar el éxito en sus pruebas."
+    },
+    {
+        "name" : "Charles Finch",
+        "photo" : "images/Charles.png",
+        "position" : "Profesor de Conversación Avanzada",
+        "bio" : "Charles Finch es un apasionado profesor de inglés con más de una década de experiencia en la enseñanza de conversación avanzada. Con un enfoque en mejorar la fluidez y la confianza de sus estudiantes, Charles utiliza debates, discusiones sobre temas actuales y ejercicios de role-playing para fomentar un entorno de aprendizaje dinámico e interactivo."
+    },
+    {
+        "name" : "Oliver Blake",
+        "photo" : "images/Oliver.png",
+        "position" : "Profesor de Inglés",
+        "bio" : "Con su enfoque lúdico y creativo, Oliver crea un ambiente de aprendizaje estimulante y divertido donde los estudiantes pueden desarrollar sus habilidades lingüísticas de manera efectiva. Su experiencia en la educación primaria y secundaria le permite adaptar sus clases para satisfacer las necesidades específicas de cada grupo de edad, asegurando un progreso significativo en el dominio del idioma inglés."
+    },
+    {
+        "name" : "Jane Dalloway",
+        "photo" : "images/Jane.png",
+        "position" : "Profesora de Inglés para Negocios",
+        "bio" : "Jane Dalloway es una experta en la enseñanza de inglés para negocios con más de quince años de experiencia en el campo. Su enfoque práctico y orientado a resultados ayuda a los profesionales a desarrollar habilidades lingüísticas específicas para el entorno empresarial, incluyendo redacción de correos electrónicos, presentaciones y negociaciones."
+    }
+]

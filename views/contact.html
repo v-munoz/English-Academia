@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<!-- Imagen Cabecera-->
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1>¡Contáctanos!</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="container my-3">
+    <h3 class="fw-semibold text-center">
+        ¿Listo para dar el primer paso hacia la fluidez en inglés?
+    </h3>
+
+    <p>
+        ¡No dudes en ponerte en contacto con nosotros para cualquier pregunta, comentario o consulta que tengas!
+        Nuestro equipo está aquí para ayudarte en cada paso del camino.
+    </p>
+</section>
+
+
+<!-- Bloque Formulario de contacto -->
+<div class="container my-5">
+    <h2 class="text-uppercase border-bottom pb-1 mb-4">Formulario de contacto</h2>
+
+    <form method="post" action="{{ base_path() }}/send-contact" enctype="multipart/form-data" class="needs-validation"
+        id="contactForm" novalidate>
+        <!-- Fila de nombre y apellidos -->
+        <div class="row g-3">
+            <!-- Nombre -->
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nombre (obligatorio)"
+                    value="" required>
+                <div class="invalid-feedback">
+                    Este campo es obligatorio.
+                </div>
+            </div>
+            <!-- Apellidos -->
+            <div class="col-sm-6 mb-3">
+                <input type="text" class="form-control" id="surname" name="surname"
+                    placeholder="Apellidos (obligatorio)" value="" required>
+                <div class="invalid-feedback">
+                    Este campo es obligatorio.
+                </div>
+            </div>
+        </div>
+
+        <!-- Fila de email y tlfn -->
+        <div class="row gt-3">
+            <!-- Email -->
+            <div class="col-sm-6 mb-3">
+                <div class="input-group has-validation">
+                    <span class="input-group-text">@</span>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email (obligatorio)"
+                        value="" required>
+                    <div class="invalid-feedback fs-6">
+                        Por favor, introduce un correo electrónico válido.
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <div class="input-group has-validation">
+                    <span class="input-group-text bi-telephone"></span>
+                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
+                        placeholder="Teléfono (opcional)" value="">
+                    <div class="invalid-feedback">
+                        Por favor, introduce un número de teléfono válido.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="form-floating col-12 mb-3">
+                <textarea class="form-control" name="floatingMensaje" id="floatingMensaje" placeholder=""
+                    required></textarea>
+                <label for="floatingMensaje" class="ms-3 small">Escribe tu mensaje a English Academia</label>
+                <div class="invalid-feedback">
+                    Este campo es obligatorio.
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary btn-block rounded-2" type="submit" name="send-contact"
+            title="Enviar datos de contacto">
+            Enviar datos de contacto
+        </button>
+    </form>
+</div>
+<!-- Modal Confirmacion para el formulario de Contacto -->
+<div class="modal fade" id="contactConfirmation" tabindex="-1" aria-labelledby="contactConfirmationLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                ¡Tu mensaje se ha enviado correctamente!
+                <button type="button" class="btn-close btn-sm position-absolute end-0 top-0 p-2" data-bs-dismiss="modal"
+                    aria-label="Cerrar" title="Cerrar"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

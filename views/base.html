@@ -1,0 +1,540 @@
+<!DOCTYPE HTML>
+<html lang="es" data-bs-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+
+    <meta name="description"
+        content="Este proyecto consiste en una aplicación PHP utilizando Slim Framework como parte de mis prácticas FCT.
+        El contenido original ha sido modificado para proteger los datos privados." />
+
+    <meta property="og:image" content="" />
+
+    <meta property="og:url" content="">
+
+    <meta name="keywords" content="" />
+
+    <meta name="author" content="AdHunt3rs" />
+    <meta name="copyright" content="Víctor Muñoz" />
+    <meta name="robots" content="index,follow" />
+
+    <title>{{ title }}</title>
+
+    <!-- Base de las rutas del proyecto -->
+    <!-- Sin base no cargan las subvistas -->
+    <base href="{{ base_path() }}/" />
+
+
+    <!--Estilos CSS-->
+    <!--Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <!--Jekyll Clean Blog Template-->
+    <link rel="stylesheet" type="text/css" href="css/jekyll-clean-blog.css" />
+
+    <!--Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico" />
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/favicon/android-chrome-192x192.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="is-preload">
+    <div class="page-wrapper">
+
+        <!-- Navegación - pasa a menú lateral cuando es inferior a lg (vista móvil) -->
+        <nav id="mainNav" class="navbar navbar-dark navbar-expand-lg fixed-top" data-bs-theme="dark">
+            <div class="d-flex flex-wrap flex-fill align-items-center pt-lg-1">
+                <!-- Btn menu -->
+                <button class="navbar-toggler mx-2" type="button" data-bs-toggle="offcanvas" aria-expanded="false"
+                    data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-label="Menu de navegación"
+                    title="Menu de navegación">
+                    <i class="navbar-toggler-icon"></i>
+                </button>
+
+                <!-- Nombre y logo -->
+                <a class="navbar-brand text-uppercase gap-2 mx-2" href="{{ base_path() }}">
+                    <img src="images/favicon/android-chrome-192x192.png" alt="Logo de English Academia" height="30px">
+                    English Academia
+                </a>
+
+                <!-- Offcanvas Nav -->
+                <div class="offcanvas offcanvas-start collapse navbar-collapse" id="navbarResponsive">
+                    <div class="offcanvas-header container">
+                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas"
+                            aria-label="Cerrar menú lateral" title="Cerrar menú lateral"></button>
+
+                        <!-- Nombre y logo en OffCanvas header -->
+                        <a class="navbar-brand col-12 justify-content-center" href="{{ base_path() }}">
+                            <div class="d-grid">
+                                <img src="images/favicon/android-chrome-192x192.png" alt="Logo de English Academia"
+                                    height="75px" width="75px" class="mx-auto mb-3">
+                                <h4 class="text-uppercase">English Academia</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Cuerpo menu lateral -->
+                    <div class="offcanvas-body container-fluid">
+                        <!-- Enlaces del menú -->
+                        <ul class="navbar-nav col-12 row-gap-3 text-center pt-1">
+                            <li class="nav-item">
+                                <a class="nav-link {%if title == 'Inicio'%} text-info {% endif %}"
+                                    href="{{ base_path() }}/">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {%if title == 'Equipo'%} text-info {% endif %}"
+                                    href="{{ base_path() }}/nosotros">Nosotros</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if title=='Cursos' %} text-info {% endif %}"
+                                    href="{{ base_path() }}/cursos">Cursos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if title=='Vídeos' %} text-info {% endif %}"
+                                    href="{{ base_path() }}/videos">Vídeos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if title=='Eventos' %} text-info {% endif %}"
+                                    href="{{ base_path() }}/eventos">Eventos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if title=='Multimedia' %} text-info {% endif %}"
+                                    href="{{ base_path() }}/multimedia">Multimedia</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if title=='Tienda' %} text-info {% endif %}"
+                                    href="{{ base_path() }}/tienda">Tienda</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if title=='Contacto' %} text-info {% endif %}"
+                                    href="{{ base_path() }}/contacto">Contacto</a>
+                            </li>
+                            <li class="nav-item ms-lg-auto mt-auto mb-1">
+                                <a href="{{ base_path() }}/landing" target="_blank" rel="noopener noreferrer"
+                                    class="nav-link rounded-pill bg-secondary py-1 px-3">
+                                    Landing
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <a type="button" onclick="scrollToTop()" id="btnScrollUp" title="Subir al inicio"
+                class="position-absolute top-100 end-0 translate-middle-z m-3">
+                <i class="bi bi-arrow-up-short bg-light px-1 fs-3 rounded-2"></i>
+            </a>
+        </nav>
+
+        <!-- MAIN -->
+        <main class="min-vh-100">
+            {% block main %}
+
+            {% endblock %}
+
+
+            <!-- BTN POP-UP CARRITO -->
+            {% if cart is defined and cart|length > 0 %}
+            {% set itemsInCart = 0 %}
+            {% for item in cart %}
+            {% set itemsInCart = itemsInCart + item.quantity %}
+            {% endfor %}
+            <button type="button" id="cartBtn" data-bs-toggle="modal" data-bs-target="#checkoutModal"
+                class="btn btn-light py-2 px-3 rounded-pill position-fixed bottom-0 end-0 m-3 shadow z-3"
+                aria-label="Carrito" title="Carrito">
+                <span class="bi bi-bag fs-4"></span>
+                <span id="cantidadCarrito" class="badge bg-danger position-absolute top-0 end-0 translate-middle-z">
+                    {{ itemsInCart }}
+                </span>
+            </button>
+            {% endif %}
+
+            <!-- MI CARRITO -->
+            <form id="checkoutForm" method="post" action="{{ base_path() }}/send-checkout" enctype="multipart/form-data"
+                class="container has-validation needs-validation" novalidate>
+
+                <!-- Modal "checkoutModal" con el resumen del pedido -->
+                <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title">Pedido</h2>
+                                <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
+                                    data-bs-target="#checkoutModal" aria-label="Cerrar la ventana del carrito"
+                                    title="Cerrar"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                {% if cart is defined and cart %}
+                                {% for item in cart %}
+                                <div class="container border-bottom py-2" id="item_{{ item.id }}" item-cart>
+                                    <div class="row">
+                                        <button id="{{ item.id }}_delete" type="button" class="btn-close btn-sm ms-auto"
+                                            onclick="deleteItem('{{ item.id }}');"
+                                            aria-label="Eliminar producto del pedido"
+                                            title="Eliminar producto del pedido"></button>
+                                    </div>
+                                    <div class="row justify-content-center align-items-start">
+                                        <!-- Imagen -->
+                                        <div class="col-9 col-sm-5 col-lg-3 col-xl-2">
+                                            <img id="{{ item.id }}_image" src="{{ item['image'] }}"
+                                                alt="{{ item['product'] }}" class="img-thumbnail">
+                                        </div>
+                                        <!-- Detalles -->
+                                        <div class="col d-md-flex align-items-center">
+                                            <div class="col text-center">
+                                                <h4>{{ item['product'] }}</h4>
+                                                <input id="{{ item.id }}_item" name="{{ item.id }}_item"
+                                                    value="{{ item['product'] }}" type="hidden">
+
+                                                {% if item['size'] is defined and item['size'] %}
+                                                <span class="small">Talla {{ item['size'] }}</span>
+                                                <input id="{{ item.id }}_size" name="{{ item.id }}_size"
+                                                    value="{{ item['size'] }}" type="hidden">
+                                                {% endif %}
+
+                                                {% if item['option'] is defined and item['option'] %}
+                                                <span class="small">- {{ item['option'] }}</span>
+                                                <input id="{{ item.id }}_option" name="{{ item.id }}_option"
+                                                    value="{{ item['option'] }}" type="hidden">
+                                                {% endif %}
+                                            </div>
+
+                                            <div class="col d-flex justify-content-center ">
+                                                <button type="button" id="{{ item.id }}_btnReduceQuantityinCart"
+                                                    title="reducir cantidad"
+                                                    class="btn btn-light bi-dash-lg rounded-1 p-2"
+                                                    onclick="updateQuantity('{{ item.id }}', 'reduce');"
+                                                    aria-label="Reducir cantidad del producto"
+                                                    title="Reducir cantidad"></button>
+                                                <input id="{{ item.id }}_quantity" name="{{ item.id }}_quantity"
+                                                    value="{{ item['quantity'] }}" type="text"
+                                                    class="form-control bg-light text-center fw-bold mx-1" readonly>
+                                                </input>
+                                                <button type="button" id="btnIncreaseQuantityinCart"
+                                                    title="aumentar cantidad"
+                                                    class="btn btn-light bi-plus-lg rounded-1 p-2"
+                                                    onclick="updateQuantity('{{ item.id }}', 'increase');"
+                                                    aria-label="Aumentar cantidad del producto"
+                                                    title="Aumentar cantidad"></button>
+                                            </div>
+
+
+                                            <div
+                                                class="col d-grid justify-content-center text-center align-items-center">
+                                                <div id="{{ item.id }}_subtotal" class="fw-medium">{{ item['quantity'] *
+                                                    item['price'] }}&euro;</div>
+                                                <span class="small">[ {{ item['price'] }}&euro; ]</span>
+                                                <input id="{{ item.id }}_price" name="{{ item.id }}_price"
+                                                    value="{{ item['price'] }}" type="hidden">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                <p class="small">
+                                    Cuando realices tu compra, el proceso será gestionado de forma personalizada. Nos
+                                    pondremos en contacto contigo para
+                                    confirmar detalles y garantizar una experiencia de compra satisfactoria. ¡Gracias
+                                    por tu elección!
+                                </p>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="name" name="name"
+                                                placeholder="Nombre (obligatorio)" value="" >
+                                            <div class="invalid-feedback">Introduce un nombre válido.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                placeholder="Email (obligatorio)" value="" > <!--Añadir-->
+                                            <div class="invalid-feedback">Introduce un email válido.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control" id="comments" name="comments"
+                                                placeholder="Comentarios (opcional)"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <div
+                                    class="container d-lg-flex justify-content-lg-between text-center align-items-center">
+                                    <div>
+                                        <h4>Total: <span class="mx-2" id="totalSpan">{{ total | default(0) }} &euro;
+                                            </span></h4>
+                                        <input id="totalInput" name="total" value="{{ total }}" type="hidden">
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button"
+                                            class="btn btn-outline-secondary border-0 rounded-2 py-2 me-1"
+                                            data-bs-dismiss="modal" title="Volver atrás">Volver</button>
+                                        <button type="submit" class="btn btn-primary rounded-2 py-2"
+                                            title="Enviar pedido">Enviar pedido</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Modal Confirmacion del Pedido -->
+            <div class="modal fade" id="checkoutConfirmation" tabindex="-1" aria-labelledby="checkoutConfirmationLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header border-0">
+                            <h5 class="modal-title" id="checkoutConfirmationLabel">Confirmación de Pedido</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" title="Cerrar"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <p class="h5">Tu pedido se está procesando.</p>
+                            <p class="m-0">Pronto recibirás un email con los detalles.</p>
+                        </div>
+                        <div class="modal-footer border-0 justify-content-center">
+                            <button type="button" class="btn btn-primary btn-block py-2 rounded-2" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-dark text-white">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-3">
+                    <!-- Redes Sociales -->
+                    <div class="col-12 mb-4 mb-md-0">
+                        <h5>REDES SOCIALES</h5>
+                        <div class="list-group pt-1 gap-3">
+                            <a href="https://www.youtube.com"
+                                target="_blank" rel="noopener"
+                                class="rrssFooter list-group-item-dark rounded-pill text-decoration-none"
+                            >
+                                <img src="images/rrss/icons8-youtube.svg" alt="YouTube" width="25px" class="me-1">
+                                YouTube
+                            </a>
+                            <a href="https://instagram.com"
+                                target="_blank" rel="noopener"
+                                class="rrssFooter list-group-item-dark rounded-pill text-decoration-none"
+                            >
+                                <img src="images/rrss/icons8-instagram.svg" alt="Instagram" width="25px" class="me-1">
+                                Instagram
+                            </a>
+                            <a href="https://www.tiktok.com"
+                                target="_blank" rel="noopener"
+                                class="rrssFooter list-group-item-dark rounded-pill text-decoration-none"
+                            >
+                                <img src="images/rrss/icons8-tik-tok.svg" alt="TikTok" width="25px" class="me-1">
+                                TikTok
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Sitemap -->
+                    <div class="col-12 mb-4 mb-md-0">
+                        <h5>MAPA WEB</h5>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link {%if title == 'English Academia'%} text-info {%endif%}"
+                                    href="{{ base_path() }}">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {%if title == 'Equipo'%} text-info {%endif%}"
+                                    href="{{ base_path() }}/nosotros">Nosotros</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if title=='Cursos' %} text-info {% endif %}"
+                                    href="{{ base_path() }}/cursos">Cursos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if title=='Vídeos' %} text-info {% endif %}"
+                                    href="{{ base_path() }}/videos">Vídeos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if title=='Eventos' %} text-info {% endif %}"
+                                    href="{{ base_path() }}/eventos">Eventos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if title=='Multimedia' %} text-info {% endif %}"
+                                    href="{{ base_path() }}/multimedia">Multimedia</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if title=='Tienda' %} text-info {% endif %}"
+                                    href="{{ base_path() }}/tienda">Tienda</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if title=='Contacto' %} text-info {% endif %}"
+                                    href="{{ base_path() }}/contacto">Contacto</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Contacto -->
+                    <div class="col-12">
+                        <h5>CONTACTO</h5>
+                        <address class="lh-3">
+                            Dirección: Calle Mayor, 12
+                            <br>
+                            Talavera de la Reina (Toledo)
+                            <br>
+                            <br>
+                            Email: <a rel="noreferrer noopener" class="text-decoration-none text-info"
+                                href="mailto:support@english-academia.com" target="_blank"
+                                rel="noopener">support@english-academia.com</a>
+                        </address>
+
+                        <!-- Newsletter -->
+                        <div class="mt-4">
+                            <h5>NEWSLETTER</h5>
+                            <form id="newsletterFooterForm" method="post" action="{{ base_path() }}/send-newsletter"
+                                enctype="multipart/form-data" class="form-group needs-validation" novalidate>
+                                <div>
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder=""
+                                            value="" required>
+                                        <label for="email" class="text-dark">Email</label>
+                                        <div class="invalid-feedback">Por favor, introduce un correo electrónico válido.
+                                        </div>
+                                    </div>
+                                    <button type="submit" name="newsletter"
+                                        class="btn btn-block btn-outline-primary bg-transparent border-0"
+                                        title="Enviar solicitud a la newsletter">
+                                        Unirse <i class="bi bi-caret-right-fill"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Confirmacion para la NewsLetter -->
+            <div class="modal fade" id="newsletterConfirmation" tabindex="-1"
+                aria-labelledby="newsletterConfirmacionLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body text-dark text-center">
+                            ¡Te has suscrito a la newsletter correctamente!
+                            <button type="button" class="btn-close btn-sm position-absolute end-0 top-0 p-2"
+                                data-bs-dismiss="modal" aria-label="Cerrar" title="Cerrar"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="copyright text-center small mt-4 px-2">
+                <a href="#" class="text-decoration-none text-secondary" id="open_preferences_center">
+                    Actualizar ajustes de cookies</a>
+                - <a href="aviso-legal" class="text-decoration-none text-info">Aviso Legal</a>
+                - <a href="politica-de-cookies" class="text-decoration-none text-info">Política de cookies</a>
+                - <a href="politica-de-privacidad" class="text-decoration-none text-info">Política de privacidad</a>
+                <br>
+                &copy; Víctor Muñoz Pavón.
+            </div>
+
+        </footer>
+    </div>
+
+
+    <!--Scripts JS-->
+    <!--JQuery-->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <!--Bootstrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <script src="js/main.js"></script>
+
+    <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+    <script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/4.1.0/cookie-consent.js"
+        charset="UTF-8"></script>
+    <script type="text/javascript" charset="UTF-8">
+        document.addEventListener('DOMContentLoaded', function () {
+            cookieconsent.run({
+                "notice_banner_type": "simple",
+                "consent_type": "express",
+                "palette": "light",
+                "language": "es",
+                "page_load_consent_levels": ["strictly-necessary"],
+                "notice_banner_reject_button_hide": false,
+                "preferences_center_close_button_hide": false,
+                "page_refresh_confirmation_buttons": false,
+                "website_name": "English Academia",
+                "website_privacy_policy_url": "{{base_path()}}/politica-de-privacidad",
+                "callbacks": {
+                    "scripts_specific_loaded": (level) => {
+                        switch (level) {
+                            case 'targeting':
+                                gtag('consent', 'update', {
+                                    'ad_storage': 'granted',
+                                    'ad_user_data': 'granted',
+                                    'ad_personalization': 'granted',
+                                    'analytics_storage': 'granted'
+                                });
+                                break;
+                        }
+                    }
+                },
+                "callbacks_force": true
+            });
+        });
+    </script>
+
+    <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+    <!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+
+    <!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=TAG_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+        });
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+
+        gtag('js', new Date());
+        gtag('config', 'TAG_ID');
+    </script>
+
+
+
+</body>
+
+</html>
